@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>富銘書院 (Fumming Academy) - Dr. Angus F.M. Huang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #07090f;
+            --panel-bg: rgba(12, 16, 33, 0.75);
+            --neon-blue: #00e5ff;
+            --neon-purple: #b52aeb;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-glow: 0 0 10px rgba(0, 229, 255, 0.3), inset 0 0 15px rgba(0, 229, 255, 0.1);
+            --border-glow-purple: 0 0 10px rgba(181, 42, 235, 0.3), inset 0 0 15px rgba(181, 42, 235, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Noto Sans TC', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 229, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(181, 42, 235, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--neon-blue); border-radius: 4px; }
+
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', 'Noto Sans TC', sans-serif;
+            margin-top: 0;
+        }
+
+        h1 { color: #fff; text-shadow: 0 0 15px var(--neon-blue); font-size: 2.5rem; }
+        h2 { color: var(--neon-blue); text-shadow: 0 0 8px rgba(0, 229, 255, 0.5); font-size: 1.8rem; border-bottom: 1px solid rgba(0, 229, 255, 0.3); padding-bottom: 10px; margin-top: 40px;}
+        h3 { color: var(--neon-purple); text-shadow: 0 0 8px rgba(181, 42, 235, 0.5); margin-top: 30px;}
+
+        a { color: var(--neon-blue); text-decoration: none; transition: 0.3s; }
+        a:hover { color: var(--neon-purple); text-shadow: 0 0 8px var(--neon-purple); }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(7, 9, 15, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+            z-index: 1000;
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', 'Noto Sans TC', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        /* Header / Hero Section */
+        header {
+            margin-top: 80px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .hero-image-container {
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+            border: 2px solid var(--neon-blue);
+            box-shadow: var(--border-glow);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .hero-image-container:hover img {
+            transform: scale(1.02);
+        }
+
+        .slogan {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px rgba(181, 42, 235, 0.6);
+            margin: 20px 0;
+            letter-spacing: 2px;
+        }
+
+        .tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .tag {
+            background: rgba(0, 229, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--neon-blue);
+            box-shadow: 0 0 5px rgba(0,229,255,0.2);
+        }
+
+        .links-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .btn {
+            background: transparent;
+            border: 1px solid var(--neon-purple);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            box-shadow: 0 0 8px rgba(181, 42, 235, 0.2);
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: rgba(181, 42, 235, 0.2);
+            box-shadow: var(--border-glow-purple);
+            color: #fff;
+        }
+
+        /* Container & Cards */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            position: relative;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+        .panel:hover {
+            border-color: var(--neon-blue);
+            box-shadow: var(--border-glow);
+        }
+        
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--neon-blue);
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        ul {
+            padding-left: 20px;
+            list-style-type: none;
+        }
+        ul li {
+            position: relative;
+            margin-bottom: 12px;
+            padding-left: 20px;
+        }
+        ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--neon-blue);
+            font-weight: bold;
+        }
+
+        .year-badge {
+            display: inline-block;
+            background: rgba(181, 42, 235, 0.15);
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--neon-purple);
+            font-size: 0.85rem;
+            margin-right: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+            text-align: justify;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(0, 229, 255, 0.2);
+            margin-top: 50px;
+            color: var(--text-muted);
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#awards">Awards & Services</a>
+        <a href="#resources">Resources</a>
+    </nav>
+
+    <header>
+        <div class="hero-image-container">
+            <!-- 指向使用者提供的圖片檔案 -->
+            <img src="./富銘書院-主視覺圖.png" alt="Fumming AiGov Cyber Dashboard">
+        </div>
+        
+        <h1>富銘書院 (Fumming Academy)</h1>
+        <p style="font-size: 1.2rem; color: var(--text-main);">黃福銘博士 (Dr. Angus F.M. Huang)</p>
+        <p style="color: var(--text-muted);">協理，創新實驗部主管，將來商業銀行 (2025/12～)</p>
+        <p>信箱：<a href="mailto:fumming.io@gmail.com">fumming.io@gmail.com</a></p>
+
+        <div class="slogan">感覺無法被複製，但是數字可以傳承 ~</div>
+
+        <div class="tags">
+            <span class="tag">數據分析 (Data Analytics)</span>
+            <span class="tag">數據智慧 (Data Wisdom)</span>
+            <span class="tag">數據藝術 (Data Art)</span>
+            <span class="tag">金融科技 (Financial Technology)</span>
+            <span class="tag">行銷科技 (Marketing Technology)</span>
+        </div>
+
+        <div class="links-grid">
+            <a href="https://fumming.io" target="_blank" class="btn">富銘書院 Website</a>
+            <a href="https://fumming.substack.com" target="_blank" class="btn">Substack</a>
+            <a href="https://www.youtube.com/@fmh888" target="_blank" class="btn">YouTube (圖靈洞察實驗室)</a>
+            <a href="https://medium.com/if-lab-ai" target="_blank" class="btn">Medium (就這樣懂AI)</a>
+            <a href="http://simi.fumming.io" target="_blank" class="btn">社群媒體行銷洞察(SiMi)</a>
+            <a href="http://pipi.fumming.io" target="_blank" class="btn">寵物認養智慧(PiPi)</a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section id="about" class="panel">
+            <h2>Education & Biography</h2>
+            <h3>Education</h3>
+            <ul>
+                <li><span class="year-badge">2010</span> 博士，資訊工程學系，國立中央大學 (Ph.D. Dept of CSIE, NCU)</li>
+                <li><span class="year-badge">2005</span> 碩士，網路學習科技研究所，國立中央大學 (M.S. G.I. of Network Learning Technology, NCU)</li>
+                <li><span class="year-badge">2003</span> 學士，資訊管理學系，元智大學 (B.S. Dept of IM, YZU)</li>
+            </ul>
+
+            <h3>Biography</h3>
+            <p class="bio-text">
+                Dr. Angus F.M. Huang is the Vice President at Management Department of Franklin Templeton Securities Investment Consulting (SinoAm) Inc. Before joining the industry, he was an assistant professor at the School of Big Data Management in Soochow University in Taiwan. His research areas are Data Governance, Business Re-engineering, Robo-Advisor, Artificial Intelligence, and Visual Analytics. His research specializes in modeling and mining user context information, and he is devoted to the theories, problems and applications of these areas.
+            </p>
+            <p class="bio-text">
+                He interests in improving students’ and teachers’ teaching and learning with advanced information technology; and making human life more convenient and smarter. In his work he mixes qualitative observations with quantitative data analysis to gain deep insights from user behaviors, data features, and domain knowledge. Subsequently, he exploits the gained knowledge with engineering techniques to improve the Business Intelligence and Urban Computing domains. In his teaching he devoted to inspiring and fostering students’ innovation and entrepreneurship to help them make a real impact.
+            </p>
+        </section>
+
+        <section id="experience" class="panel">
+            <h2>Academic / Industry Positions</h2>
+            <ul>
+                <li><span class="year-badge">2025/12~迄今</span> 協理，創新實驗部主管，將來商業銀行 (NEXT Bank)</li>
+                <li><span class="year-badge">2025/6~2025/9</span> 副總經理，理財機器人研發，富蘭克林金融科技股份有限公司</li>
+                <li><span class="year-badge">2023/2~2025/6</span> 副總經理，商業數據分析，富蘭克林證券投資顧問股份有限公司</li>
+                <li><span class="year-badge">2021~2023</span> 特聘顧問，商業數據分析，富蘭克林金融科技股份有限公司</li>
+                <li><span class="year-badge">2016/8~2023/1</span> 助理教授，東吳大學 資料科學系</li>
+                <li><span class="year-badge">2015/8~2016/7</span> 博士後研究員，中央研究院 資訊科技創新研究中心</li>
+                <li><span class="year-badge">2010/8~2015/7</span> 博士後研究員，中央研究院 資訊科學研究所</li>
+                <li><span class="year-badge">2019/1~2022/12</span> Google AI Lecturer，Explore ML Academy Program</li>
+                <li><span class="year-badge">2019/1~2020/12</span> 技術顧問，國泰世紀產物保險股份有限公司</li>
+                <li><span class="year-badge">2018/3~2019/8</span> 課程講師，康橋國際學校，大數據分析課程</li>
+                <li><span class="year-badge">2018/1~2019/12</span> 領域顧問，經濟部工業局，人工智慧與數據應用</li>
+                <li><span class="year-badge">2017/7~2017/8</span> 訪問學者，中央研究院 資訊科學研究所</li>
+                <li><span class="year-badge">2015/8~2016/7</span> 兼任助理教授，中國文化大學 資訊管理學系</li>
+                <li><span class="year-badge">2009/9~2010/6</span> 兼任講師，陸軍專科學校 電腦與通訊工程科</li>
+            </ul>
+        </section>
+
+        <section id="projects" class="panel">
+            <h2>Projects (產學與政府計畫)</h2>
+            
+            <h3>產學合作計畫</h3>
+            <ul>
+                <li><span class="year-badge">2022~2023</span> 東吳大學推動人工智慧運用計畫 - 整合遊戲玩家紀錄及改良式LSTM模型預測線上訂閱制遊戲客戶流失</li>
+                <li><span class="year-badge">2022</span> 富蘭克林商業分析人才培訓計畫 / 境外基金競品解析研發計畫</li>
+                <li><span class="year-badge">2021~2022</span> 東吳大學人工智慧應用研究中心 - 融合時空因素與編碼解碼特徵強化影片異常檢測</li>
+                <li><span class="year-badge">2021</span> 富蘭克林視覺化商業智慧人才培訓計畫 / 基金網路輿情戰情室網站建置</li>
+                <li><span class="year-badge">2019~2021</span> 國泰世紀產物保險 - 要保書影像辨識系統研發 / 車籍資料影像辨識系統優化 / 客戶簽名與塗改擷取</li>
+                <li><span class="year-badge">2020~2021</span> 東吳大學人工智慧應用研究中心 - 基於LSTM與CNN之空污來源地點推估</li>
+                <li><span class="year-badge">2018</span> IBM - 基於臉部表情辨識之投資風格與學習障礙辨識</li>
+                <li><span class="year-badge">2018</span> 英商即時利尼克斯 - ThizPass即時活動通智慧型手機應用程式之研發</li>
+            </ul>
+
+            <h3>政府部會計畫</h3>
+            <ul>
+                <li><span class="year-badge">2021~2022</span> 教育部教學實踐研究計畫 - 運用產業實務儀表板系統與專題式學習法提升資料科學技能</li>
+                <li><span class="year-badge">2018~2021</span> 科技部前沿人工智慧科研成果轉化 - 人工智慧成果影響評估與轉譯及知識圖譜之生成(1/3 - 3/3)</li>
+                <li><span class="year-badge">2019</span> 中央氣象局網路氣象輿情分析服務案</li>
+                <li><span class="year-badge">2018~2020</span> 科技部 - 巨量資料分析與人工智慧：實現群眾募資風險評估</li>
+                <li><span class="year-badge">2016</span> 科技部 - 國內舉辦國際學術研討會：2016全球大數據國際會議</li>
+            </ul>
+
+            <h3>政府單位計畫經歷（擔任計畫共同主持人）</h3>
+            <ul>
+                <li><span class="year-badge">2017~2020</span> 科技部 - 深度學習與大數據分析:實現PM2.5濃度之推估、預測與預警 (1/3 - 3/3)</li>
+            </ul>
+
+            <h3>教育部深耕計畫經歷（擔任共同主持人）</h3>
+            <ul>
+                <li><span class="year-badge">2018~2019</span> 教育部高教深耕計畫 - 深化跨領域學群課程規劃以奠基巨量資料解析能力培養與就業保障</li>
+                <li><span class="year-badge">2017</span> 教育部教學卓越計畫 - 培育跨領域之巨量資料分析與應用人才 / 大數據時代的資料實驗室</li>
+            </ul>
+        </section>
+
+        <section id="publications" class="panel">
+            <h2>Publications</h2>
+            <h3>Selected Journal Publications</h3>
+            <ul>
+                <li>Fu-Ming Huang, et al. (2012). "A study of user’s acceptance on situational mashups in situational language teaching." British Journal of Educational Technology.</li>
+                <li>Fu-Ming Huang, et al. (2012). "The success of eportfolio-based programming learning style diagnosis: exploring the role of a novel heuristic fuzzy knowledge fusion." Expert Systems with Applications.</li>
+                <li>Fu-Ming Huang, et al. (2010). "Improving Fuzzy Knowledge Integration with Particle Swarm Optimization." Expert Systems with Applications.</li>
+                <li>Fu-Ming Huang, et al. (2009). "An optimal QoS-based Web services selection scheme." Information Sciences.</li>
+                <li>Yang, S.J.H., Zhang, J., Tsai, J.J.P., & Fu-Ming Huang (2009). "SOA-based Content Delivery Model for Mobile Internet Navigation." International Journal of Artificial Intelligence Tools.</li>
+            </ul>
+            <h3>Selected Conference Publications</h3>
+            <ul>
+                <li>盧伯霖, 等. (2020). "以機器學習模型為基礎之YouTube影片分享網站熱門榜單影片觀看量預測", TAAI 2020.</li>
+                <li>Angus F.M. Huang, et al. (2019). "Suspicious Network Event Recognition Using Modified Stacking Ensemble Machine Learning", IEEE Big Data.</li>
+                <li>P. Yu, Angus F.M. Huang, et al. (2018). "Prediction of Crowdfunding Project Success with Deep Learning", IEEE ICEBE (Best Paper Award).</li>
+                <li>C. Chen, Angus F.M. Huang, et al. (2018). "Artificial Intelligence and Mobile Phone Sensing Based User Activity Recognition", IEEE ICEBE.</li>
+            </ul>
+        </section>
+
+        <section id="awards" class="panel">
+            <h2>Awards, Mentorship & Academic Service</h2>
+            
+            <h3>Personal Awards</h3>
+            <ul>
+                <li><span class="year-badge">2021</span> 東吳大學熱心導師獎</li>
+                <li><span class="year-badge">2020</span> 東吳大學巨量資料管理學院文華獎學金教師組</li>
+                <li><span class="year-badge">2018</span> IBM Faculty Awards - Cognitive Computing area</li>
+            </ul>
+
+            <h3>Student Competition Awards (As Advisor)</h3>
+            <ul>
+                <li><span class="year-badge">2022</span> 全國大專校院智慧創新暨跨域整合創作競賽，智慧機器組佳作獎</li>
+                <li><span class="year-badge">2019</span> IEEE Big Data Conference - BigData Cup Challenges: Suspicious Network Event Recognition (16th Place)</li>
+                <li><span class="year-badge">2019</span> 全國大專院校AI金融科技創新創意大賽，創意組佳作獎</li>
+                <li><span class="year-badge">2018</span> 華南金控第三屆金融科技創新競賽，創新技術實證MBA組最佳潛力獎</li>
+                <li><span class="year-badge">2017</span> 華南金控第二屆金融科技創新競賽，華南 M.B.A.挑戰獎 - AI組</li>
+                <li><span class="year-badge">2017</span> HackNTU 臺大黑客松，大會最佳DEMO獎</li>
+            </ul>
+            
+            <h3>指導學生碩士論文 (Master Theses Advised)</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">指導超過20位研究生完成包含機器學習、深度學習、精準行銷、電腦視覺、自然語言處理、影像辨識等多元商業資料科學應用領域之碩士論文 (2018-2023)。</p>
+
+            <h3>展演與學術服務</h3>
+            <ul>
+                <li><span class="year-badge">2016-Present</span> Track Chairs & Program Committee members for various conferences including ICEBE, TCSE, TANET.</li>
+                <li><span class="year-badge">2018-2020</span> 科技部前沿科技轉化暨推廣成果展 (高雄、屏東、台中、澎湖等多地展出)</li>
+                <li><span class="year-badge">2021</span> 教育部「AI機器學習與深度學習應用」講師 / 台北市政府「永續發展與人工智慧培訓課」</li>
+                <li><span class="year-badge">2019</span> 財政部財政資訊中心演講「運用大數據及AI技術提升稅務查審作業之服務效能」</li>
+                <li><span class="year-badge">2017-2018</span> FinTechBase 金融科技系列創新講座講師</li>
+            </ul>
+        </section>
+
+        <section id="resources" class="panel">
+            <h2>Financial Technology & 網路學習資源</h2>
+            <div style="column-count: 2; column-gap: 20px; font-size: 0.95rem;">
+                <ul>
+                    <li>銀行法</li>
+                    <li>金融控股公司及銀行業內部控制及稽核制度實施辦法</li>
+                    <li>金融監督管理委員會-金融業運用人工智慧(AI)指引</li>
+                    <li>銀行公會-金融機構運用人工智慧技術作業規範</li>
+                    <li>行政院-人工智慧基本法</li>
+                    <li>數位發展部-公部門人工智慧應用參考手冊</li>
+                    <li>金融監督管理委員會-虛擬資產服務法</li>
+                    <li>證券投資信託基金管理辦法</li>
+                    <li>證券投資信託事業私募證券投資信託基金投資說明書應行記載事項準則</li>
+                    <li>信託法 / 公司法 / 企業併購法</li>
+                    <li>境外基金管理辦法</li>
+                    <li>證券交易法 / 證券投資信託及顧問法</li>
+                    <li>特殊目的公司設立及許可準則（SPV）</li>
+                </ul>
+            </div>
+        </section>
+        
+    </div>
+
+    <footer>
+        <p>© 2025 Fumming Academy. All rights reserved.</p>
+        <p style="font-size: 0.8rem; opacity: 0.6;">Designed for Dr. Angus F.M. Huang</p>
+    </footer>
+
+</body>
+</html>
