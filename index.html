@@ -142,6 +142,46 @@
             color: #fff;
         }
 
+        /* 兩張圖片並排排版 */
+        .hero-image-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .hero-img-box {
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.5);
+            transition: 0.3s;
+            display: flex;
+        }
+
+        /* 左邊：Fumming Academy 主視覺框 */
+        .box-academy {
+            border: 2px solid var(--main-cyan);
+            box-shadow: var(--border-glow-cyan);
+        }
+        .img-academy {
+            width: 500px;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        /* 右邊：大頭照框 */
+        .box-avatar {
+            border: 2px solid var(--neon-magenta);
+            box-shadow: var(--border-glow-magenta);
+        }
+        .img-avatar {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        
         /* Container & Cards */
         .container {
             max-width: 1100px;
@@ -219,6 +259,20 @@
             color: var(--text-muted);
             font-family: 'Orbitron', sans-serif;
         }
+        
+        /* RWD 響應式設定 */
+        @media (max-width: 900px) {
+            .hero-image-row { flex-direction: column; gap: 20px; }
+            .img-academy { width: 100%; max-width: 500px; height: auto; aspect-ratio: 500/280; }
+            .img-avatar { width: 100%; max-width: 280px; height: auto; aspect-ratio: 1/1; }
+        }
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px; }
+            .nav-links { margin-top: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .nav-links a { margin-left: 0; }
+            .project-card { flex-direction: column; text-align: center; }
+            .hero h1 { font-size: 36px; }
+        }
     </style>
 </head>
 <body>
@@ -283,11 +337,13 @@
             </p>
         </section>
 
-        <div class="hero-image-container">
-            <img src="./FummingAcademy-Logo.png" alt="Fumming Academy">
-        </div>
-        <div class="hero-image-container">
-            <img src="./FummingAcademy-Angus.jpg" alt="Fumming Academy">
+        <div class="hero-image-row">
+                <div class="hero-img-box box-academy">
+                    <img src="./FummingAcademy-Logo.png" alt="Fumming Academy Logo" class="img-academy">
+                </div>
+                <div class="hero-img-box box-avatar">
+                    <img src="./FummingAcademy-Logo.png" alt="Fumming Academy Angus" class="img-avatar">
+                </div>
         </div>
         
         <section id="experience" class="panel">
