@@ -43,8 +43,34 @@
         }
 
         h1 { color: #fff; text-shadow: 0 0 15px var(--neon-blue); font-size: 2.5rem; }
-        h2 { color: var(--neon-blue); text-shadow: 0 0 15px rgba(0, 229, 255, 0.5); font-size: 1.8rem; border-bottom: 1px solid rgba(0, 229, 255, 0.3); padding-bottom: 10px; margin-top: 40px;}
+
+        h2 {
+            /* 1. 核心字體顏色：極淡的青白色，模擬發光燈管的中心高光 */
+            color: #e0ffff;
+
+            /* 2. 字體選用：強烈建議搭配科技感字體（如 Orbitron），若無則使用無襯線體 */
+            font-family: 'Orbitron', 'Noto Sans TC', sans-serif;
+            font-size: 1.8rem;
+            
+            /* 3. 賽博朋克排版：全大寫 + 寬字距 */
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 700;
+
+            /* 4. 賽博藍多層次霓虹發光效果 */
+            text-shadow: 
+                0 0 4px #ffffff,                /* 第1層：核心白光，確保文字中心清晰 */
+                0 0 10px #00ffff,               /* 第2層：強烈電光青（Cyan） */
+                0 0 20px #00b3ff,               /* 第3層：霓虹藍主色調 */
+                0 0 40px #0044ff,               /* 第4層：深藍色擴散暈光 */
+                0 0 70px rgba(112, 0, 255, 0.6); /* 第5層：隱約的賽博紫環境氛圍光 */
+                
+            /* 保持一點上下間距 */
+            padding: 10px 0;
+        }
+        
         h3 { color: var(--neon-purple); text-shadow: 0 0 15px rgba(181, 42, 235, 0.5); font-size: 1.8rem; margin-top: 30px;}
+        
         h4 { 
             /* 1. 核心字體：保持純白，提供最高清晰度的對比 */
             color: #ffffff; 
