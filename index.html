@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黃福銘 - 富銘書院 - Fumming Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Google 經典核心四色 */
+            --google-blue: #1a73e8;
+            --google-red: #ea4335;
+            --google-yellow: #fbbc05;
+            --google-green: #34a853;
+            
+            /* Material You 多彩卡片輕量背景色 */
+            --blue-surface: #e8f0fe;
+            --blue-border: #aecbfa;
+            --blue-text: #174ea6;
+
+            --green-surface: #e6f4ea;
+            --green-border: #a8dab5;
+            --green-text: #137333;
+
+            --yellow-surface: #fef7e0;
+            --yellow-border: #fde293;
+            --yellow-text: #b06000;
+
+            --red-surface: #fce8e6;
+            --red-border: #fad2cf;
+            --red-text: #c5221f;
+
+            --text-primary: #202124;
+            --text-secondary: #5f6368;
+            --bg-main: #ffffff;
+            --border-color: #dadce0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 導航欄與 Google 彩色漸層條 */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+        .google-bar {
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(to right, var(--google-blue) 25%, var(--google-red) 25%, var(--google-red) 50%, var(--google-yellow) 50%, var(--google-yellow) 75%, var(--google-green) 75%);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+        }
+        .nav-logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        .logo-g { color: var(--google-blue); }
+        .logo-o1 { color: var(--google-red); }
+        .logo-o2 { color: var(--google-yellow); }
+        .logo-g2 { color: var(--google-blue); }
+        .logo-l { color: var(--google-green); }
+        .logo-e { color: var(--google-red); }
+
+        .nav-links {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .nav-links a:hover {
+            background-color: var(--blue-surface);
+            color: var(--google-blue);
+        }
+
+        /* 主橫幅 Section - 彩色科技感背景 */
+        .hero-section {
+            background: linear-gradient(135deg, #f4f8ff 0%, #f5faf6 50%, #fffdf4 100%);
+            padding: 60px 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 48px;
+            align-items: center;
+        }
+        @media (max-width: 992px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; justify-items: center;}
+        }
+        
+        .google-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--google-blue), #0d529d);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(26,115,232,0.3);
+        }
+        .hero-title h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+        .hero-title h2 {
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        
+        /* 雙標語彩色名言方塊 */
+        .slogan-box {
+            background: white;
+            border-radius: 16px;
+            border-left: 6px solid var(--google-yellow);
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+        .slogan-box p {
+            font-style: italic;
+            color: var(--text-primary);
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+        .slogan-box p:last-child { margin-bottom: 0; color: var(--google-blue); }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+        .contact-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            background: white;
+            padding: 6px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .contact-item a { color: var(--google-blue); text-decoration: none; }
+
+        /* 經典 Google 四色個人照片容器 */
+        .avatar-container {
+            position: relative;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: white;
+            padding: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .avatar-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(45deg, var(--google-blue), var(--google-red), var(--google-yellow), var(--google-green));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            z-index: 1;
+        }
+
+        /* 核心專長 Pills 升級四色彩色款 */
+        .core-competencies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .competency-tag {
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+        .competency-tag:nth-child(1) { background: var(--blue-surface); border: 1px solid var(--blue-border); color: var(--blue-text); }
+        .competency-tag:nth-child(2) { background: var(--green-surface); border: 1px solid var(--green-border); color: var(--green-text); }
+        .competency-tag:nth-child(3) { background: var(--yellow-surface); border: 1px solid var(--yellow-border); color: var(--yellow-text); }
+        .competency-tag:nth-child(4) { background: var(--red-surface); border: 1px solid var(--red-border); color: var(--red-text); }
+
+        /* 社群外鏈按鈕四色化 */
+        .links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .btn-google {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-google:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+        }
+        .btn-google:nth-child(1) { border: 2px solid var(--google-blue); color: var(--google-blue); }
+        .btn-google:nth-child(2) { border: 2px solid var(--google-red); color: var(--google-red); }
+        .btn-google:nth-child(3) { border: 2px solid var(--google-yellow); color: var(--yellow-text); }
+        .btn-google:nth-child(4) { border: 2px solid var(--google-green); color: var(--google-green); }
+        .btn-google:nth-child(5) { border: 2px solid var(--google-blue); color: var(--google-blue); }
+
+        /* 網頁主內容架構 */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-top: 56px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* 繽紛彩色 Material Cards 核心基底 */
+        .card {
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        /* 主題顏色卡片設定 */
+        .card-blue { background: var(--blue-surface); border: 1px solid var(--blue-border); border-left: 8px solid var(--google-blue); }
+        .card-green { background: var(--green-surface); border: 1px solid var(--green-border); border-left: 8px solid var(--google-green); }
+        .card-yellow { background: var(--yellow-surface); border: 1px solid var(--yellow-border); border-left: 8px solid var(--google-yellow); }
+        .card-red { background: var(--red-surface); border: 1px solid var(--red-border); border-left: 8px solid var(--google-red); }
+
+        /* 學歷項目設計 */
+        .edu-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .edu-item {
+            background: white;
+            padding: 16px;
+            border-radius: 14px;
+            border: 1px solid var(--blue-border);
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .edu-item span { color: var(--google-blue); font-size: 20px; }
+
+        .bio-text {
+            color: #3c4043;
+            font-size: 15px;
+            text-align: justify;
+            background: white;
+            padding: 20px;
+            border-radius: 14px;
+            border: 1px solid var(--blue-border);
+        }
+
+        /* 時間軸經歷美化 */
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+            border-left: 3px solid var(--green-border);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+            background: white;
+            padding: 16px 20px;
+            border-radius: 14px;
+            border: 1px solid var(--green-border);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 20px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--google-green);
+            z-index: 2;
+        }
+        .timeline-item.current {
+            border: 2px solid var(--google-blue);
+            background: #f4f8ff;
+        }
+        .timeline-item.current::before {
+            border: 3px solid var(--google-blue);
+            background: var(--google-blue);
+            box-shadow: 0 0 0 5px rgba(26,115,232,0.25);
+        }
+        .time-badge {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--green-text);
+            margin-bottom: 4px;
+        }
+        .timeline-item.current .time-badge { color: var(--google-blue); }
+        .job-title { font-size: 17px; font-weight: 700; color: var(--text-primary); }
+        .company-title { font-size: 14px; color: var(--text-secondary); font-weight: 500; }
+
+        /* 彩色摺疊風琴群組 (Material Accordions) */
+        details {
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: all 0.3s;
+        }
+        details.details-blue { background: var(--blue-surface); border: 1px solid var(--blue-border); }
+        details.details-green { background: var(--green-surface); border: 1px solid var(--green-border); }
+        details.details-yellow { background: var(--yellow-surface); border: 1px solid var(--yellow-border); }
+        details.details-red { background: var(--red-surface); border: 1px solid var(--red-border); }
+
+        summary {
+            padding: 18px 24px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+            outline: none;
+        }
+        details.details-blue summary { color: var(--blue-text); }
+        details.details-green summary { color: var(--green-text); }
+        details.details-yellow summary { color: var(--yellow-text); }
+        details.details-red summary { color: var(--red-text); }
+
+        summary::after {
+            content: '\e5cf';
+            font-family: 'Material Icons Outlined';
+            font-size: 24px;
+            transition: transform 0.3s;
+        }
+        details[open] summary::after { transform: rotate(180deg); }
+
+        .details-content {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        /* 列表細項彩色化 */
+        .project-item, .pub-item {
+            padding: 14px 10px;
+            border-bottom: 1px dashed var(--border-color);
+            display: flex;
+            gap: 16px;
+        }
+        .project-item:last-child, .pub-item:last-child { border-bottom: none; }
+        
+        .item-date {
+            font-weight: 700;
+            min-width: 160px;
+            flex-shrink: 0;
+        }
+        details.details-blue .item-date { color: var(--google-blue); }
+        details.details-green .item-date { color: var(--google-green); }
+        details.details-yellow .item-date { color: var(--yellow-text); }
+        details.details-red .item-date { color: var(--google-red); }
+
+        @media (max-width: 600px) {
+            .project-item { flex-direction: column; gap: 4px; }
+            .item-date { min-width: auto; }
+        }
+
+        /* 獲獎小卡特殊樣式 */
+        .award-subcard {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 12px;
+        }
+        .card-red .award-subcard { border: 1px solid var(--red-border); }
+        .card-green .award-subcard { border: 1px solid var(--green-border); }
+
+        /* 資源網格 - 爆發繽紛四色效果 */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .resource-card {
+            padding: 18px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: white;
+        }
+        .resource-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .resource-card:nth-child(4n+1) { border: 2px solid var(--google-blue); color: var(--blue-text); background: var(--blue-surface); }
+        .resource-card:nth-child(4n+2) { border: 2px solid var(--google-red); color: var(--red-text); background: var(--red-surface); }
+        .resource-card:nth-child(4n+3) { border: 2px solid var(--google-yellow); color: var(--yellow-text); background: var(--yellow-surface); }
+        .resource-card:nth-child(4n+4) { border: 2px solid var(--google-green); color: var(--green-text); background: var(--green-surface); }
+
+        /* 頁尾 */
+        footer {
+            background: #1f1f1f;
+            color: #e3e3e3;
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="google-bar"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-g">F</span>
+                <span class="logo-o1">u</span>
+                <span class="logo-o2">m</span>
+                <span class="logo-g2">m</span>
+                <span class="logo-l">i</span>
+                <span class="logo-e">n</span>
+                <span class="logo-g">g</span>
+                <span style="color: var(--text-primary); margin-left: 2px;">Academy</span>
+            </div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#awards">Awards & Service</a>
+                <a href="#publications">Publications</a>
+                <a href="#resources">Resources</a>
+                <a href="#activities">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section" id="about">
+        <div class="hero-container">
+            <div class="hero-title">
+                <div class="google-badge">
+                    <span class="material-icons-outlined" style="font-size:20px">work_outline</span>
+                    富銘書院 * Fumming Academy
+                </div>
+                <h1>黃福銘 博士</h1>
+                <h2>Dr. Angus F.M. Huang</h2>
+                
+                <div class="slogan-box">
+                    <p>“What wakes you up every morning, Alarm clock or Enthusiasm?”</p>
+                    <p>“每天叫你起床的是鬧鐘，還是熱情～？”</p>
+                </div>
+
+                <div class="google-badge">
+                    <span class="material-icons-outlined" style="font-size:20px">work_outline</span>
+                    Assistant Vice President，Innovation Lab Department @NEXT Bank
+                </div>
+                <br>
+                <div class="google-badge">
+                    <span class="material-icons-outlined" style="font-size:20px">work_outline</span>
+                    協理，創新實驗部 @將來商業銀行
+                </div>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="material-icons-outlined" style="color: var(--google-blue);">language</span>
+                        <a href="https://fumming.io/" style="font-size:20px">fumming.io</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="material-icons-outlined" style="color: var(--google-red);">mail</span>
+                        <a href="mailto:fumming.io@gmail.com" style="font-size:20px">fumming.io@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="core-competencies">
+                    <div class="competency-tag" style="font-size:20px">AI Modeling & Governance（人工智慧建模與治理）</div>
+                    <div class="competency-tag" style="font-size:20px">Data Analytics & Insights（數據分析與洞察）</div>
+                    <div class="competency-tag" style="font-size:20px">Enterprise Strategy & Operations（企業策略與營運）</div>
+                    <div class="competency-tag" style="font-size:20px">FinTech & MarTech（金融與行銷科技）</div>
+                </div>
+
+                <div class="links-grid">
+                    <a href="https://fumming.substack.com/" class="btn-google" target="_blank" style="font-size:20px">富銘書院 @Substack</a>
+                    <a href="http://turinginsight.tech/" class="btn-google" target="_blank" style="font-size:20px">圖靈洞察實驗室</a>
+                    <a href="https://www.youtube.com/@fmh888" class="btn-google" target="_blank" style="font-size:20px">Turing Insight @YouTube</a>
+                    <a href="https://medium.com/if-lab-ai" class="btn-google" target="_blank" style="font-size:20px">就這樣懂AI @Medium</a>
+                    <a href="http://pipi.fumming.io/" class="btn-google" target="_blank" style="font-size:20px">PiPi寵物認養智慧</a>
+                </div>
+            </div>
+
+            <div class="avatar-container">
+                <img src="FummingAcademy-Angus.jpg" alt="Dr. Angus F.M. Huang" class="avatar-img">
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        
+        <div class="card card-blue">
+            <h3 style="font-weight: 700; font-size: 20px; color: var(--blue-text); margin-bottom: 20px; display:flex; align-items:center; gap:8px;">
+                <span class="material-icons-outlined" style="font-size: 28px;">school</span> Education & Biography
+            </h3>
+            
+            <div class="edu-list" style="margin-bottom: 24px;">
+                <div class="edu-item">
+                    <span class="material-icons-outlined">workspace_premium</span>
+                    <div>
+                        <strong>2010 博士</strong><br>
+                        <span class="company-title">資訊工程學系，國立中央大學 (Ph.D. Dept of CSIE, NCU)</span>
+                    </div>
+                </div>
+                <div class="edu-item">
+                    <span class="material-icons-outlined">workspace_premium</span>
+                    <div>
+                        <strong>2005 碩士</strong><br>
+                        <span class="company-title">網路學習科技研究所，國立中央大學 (M.S. G.I. of Network Learning Technology, NCU)</span>
+                    </div>
+                </div>
+                <div class="edu-item">
+                    <span class="material-icons-outlined">workspace_premium</span>
+                    <div>
+                        <strong>2003 學士</strong><br>
+                        <span class="company-title">資訊管理學系，元智大學 (B.S. Dept of IM, YZU)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bio-text">
+                <p>Dr. Angus F.M. Huang is the Vice President at Management Department of Franklin Templeton Securities Investment Consulting (SinoAm) Inc. Before joining the industry, he was an assistant professor at the School of Big Data Management in Soochow University in Taiwan. His research areas are Data Governance, Business Re-engineering, Robo-Advisor, Artificial Intelligence, and Visual Analytics. His research specializes in modeling and mining user context information, and he is devoted to the theories, problems and applications of these areas.</p>
+                <br>
+                <p>He interests in improving students' and teachers' teaching and learning with advanced information technology; and making human life more convenient and smarter. In his work he mixes qualitative observations with quantitative data analysis to gain deep insights from user behaviors, data features, and domain knowledge. Subsequently, he exploits the gained knowledge with engineering techniques to improve the Business Intelligence and Urban Computing domains. In his teaching he devoted to inspiring and fostering students' innovation and entrepreneurship to help them make a real impact.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="experience" style="color: var(--green-text);">
+            <span class="material-icons-outlined" style="color: var(--google-green); font-size: 32px;">trending_up</span> Academic / Industry Positions
+        </h2>
+        <div class="card card-green">
+            <div class="timeline">
+                <div class="timeline-item current">
+                    <div class="time-badge">2025/12 ~ 迄今</div>
+                    <div class="job-title">協理，創新實驗部主管，將來商業銀行 (NEXT Bank)</div>
+                    <div class="company-title">前沿科技研究、人工智慧推動與治理、資料科學與視覺化分析、銀行策略與營運、FinLLM金融大語言模型</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-badge">2025/06 ~ 2025/09</div>
+                    <div class="job-title">副總經理，富蘭克林金融科技股份有限公司</div>
+                    <div class="company-title">理財機器人、智慧戰情室</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-badge">2023/02 ~ 2025/06</div>
+                    <div class="job-title">副總經理，富蘭克林證券投資顧問股份有限公司</div>
+                    <div class="company-title">商業數據分析，智慧戰情室</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-badge">2021 ~ 2023</div>
+                    <div class="job-title">特聘顧問，富蘭克林金融科技股份有限公司</div>
+                    <div class="company-title">商業數據分析，智慧戰情室</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-badge">2016/08 ~ 2023/01</div>
+                    <div class="job-title">助理教授，東吳大學資料科學系</div>
+                    <div class="company-title">資料科學、大數據分析、資料庫、視覺化分析、機器學習、人工智慧</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-badge">2015/08 ~ 2016/07</div>
+                    <div class="job-title">博士後研究員，中央研究院資訊科技創新研究中心</div>
+                    <div class="company-title">資料科學、機器學習、時空序列分析、實境增強應用</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-badge">2010/08 ~ 2015/07</div>
+                    <div class="job-title">博士後研究員，中央研究院資訊科學研究所</div>
+                    <div class="company-title">資料科學、機器學習、城市運算、空汙分析</div>
+                </div>
+                <div class="timeline-item" style="border: 2px dashed var(--google-blue); background: #f4f8ff;">
+                    <div class="time-badge" style="color:var(--google-blue)">2019/01 ~ 2022/12</div>
+                    <div class="job-title" style="color:var(--google-blue)">Google AI Lecturer</div>
+                    <div class="company-title">Explore ML Academy Program</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-badge">2019/01 ~ 2020/12</div>
+                    <div class="job-title">技術顧問</div>
+                    <div class="company-title">國泰世紀產物保險股份有限公司</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-badge">2018/03 ~ 2019/08</div>
+                    <div class="job-title">課程講師</div>
+                    <div class="company-title">康橋國際學校，大數據分析課程</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-badge">2018/01 ~ 2019/12</div>
+                    <div class="job-title">領域顧問</div>
+                    <div class="company-title">經濟部工業局，人工智慧與數據應用</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-badge">2017/07 ~ 2017/08</div>
+                    <div class="job-title">訪問學者</div>
+                    <div class="company-title">中央研究院資訊科學研究所</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-badge">2015/08 ~ 2016/07</div>
+                    <div class="job-title">兼任助理教授</div>
+                    <div class="company-title">中國文化大學資訊管理學系</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time-badge">2009/09 ~ 2010/06</div>
+                    <div class="job-title">兼任講師</div>
+                    <div class="company-title">陸軍專科學校電腦與通訊工程科</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="projects" style="color: var(--yellow-text);">
+            <span class="material-icons-outlined" style="color: var(--google-yellow); font-size: 32px;">assignment</span> Projects (產學與政府計畫)
+        </h2>
+
+        <details class="details-blue">
+            <summary>產學合作計畫</summary>
+            <div class="details-content">
+                <div class="project-item">
+                    <div class="item-date">2022/08/01~2023/07/31</div>
+                    <div>東吳大學推動人工智慧運用計畫-戴氏基金會2023年，整合遊戲玩家紀錄及改良式長短期記憶模型深度學習之線上訂閱制遊戲客戶流失預測，111160605-0012。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2022/07/01~2023/06/30</div>
+                    <div>富蘭克林證券投資顧問股份有限公司，2022富蘭克林商業分析人才培訓計畫，SCU1110500578-054。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2022/07/01~2022/12/31</div>
+                    <div>富蘭克林證券投資顧問股份有限公司，富蘭克林境外基金競品解析研發計畫，SCU1110500579-055。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2021/08/01~2022/07/31</div>
+                    <div>東吳大學人工智慧應用研究中心，融合時空因素與編碼解碼特徵強化影片異常檢測之研究。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2021/07/01~2022/06/30</div>
+                    <div>富蘭克林證券投資顧問股份有限公司，富蘭克林視覺化商業智慧人才培訓計畫。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2021/05/01~2021/10/31</div>
+                    <div>富蘭克林證券投資顧問股份有限公司，富蘭克林基金網路輿情戰情室網站建置計畫。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2021/05/01~2021/10/31</div>
+                    <div>國泰世紀產物保險股份有限公司，限定要保書款式之客戶簽名與塗改圖樣擷取系統之研發。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2020/11/01~2020/12/31</div>
+                    <div>國泰世紀產物保險股份有限公司，車籍資料影像辨識系統優化，SCU1090500818-006。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2020/08/01~2021/07/31</div>
+                    <div>東吳大學人工智慧應用研究中心，基於長短期記憶模型與卷積神經網絡之空污來源地點推估。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2020/04/06~2020/06/15</div>
+                    <div>國泰世紀產物保險股份有限公司，以深度學習技術為基礎之要保書影像辨識系統研發，SCU1090500353-036。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2019/10/01~2019/12/31</div>
+                    <div>國泰世紀產物保險股份有限公司，要保書影像辨識系統研發，SCU1080500870-008。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2018/07/01~2018/12/31</div>
+                    <div>IBM 國際商業機器股份有限公司，基於臉部表情辨識之投資風格與學習障礙辨識。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2018/04/01~2018/09/30</div>
+                    <div>英商即時利尼克斯有限公司台灣分公司，ThizPass即時活動通智慧型手機應用程式之研發。</div>
+                </div>
+            </div>
+        </details>
+
+        <details class="details-green">
+            <summary>政府部會計畫</summary>
+            <div class="details-content">
+                <div class="project-item">
+                    <div class="item-date">2021/08/01~2022/07/31</div>
+                    <div>教育部，教學實踐研究計畫，運用產業實務儀表板系統與專題式學習法以提升學生資料科學之資料視覺化分析技能，PSK1100648。https://tpr.moe.edu.tw/</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2020/07/01~2021/09/31</div>
+                    <div>科技部，前沿人工智慧科研成果轉化：轉譯、呈現、與評估－總計畫(含子計畫一)：人工智慧成果影響評估與轉譯及人工智慧知識圖譜之生成(3/3)，MOST 109-2514-S-031-001。https://education.nstm.gov.tw/aibm/index.html</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2019/11/01~2019/12/31</div>
+                    <div>中央氣象局，中央氣象局網路氣象輿情分析服務案，SCU1080501076-018。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2019/07/01~2020/06/30</div>
+                    <div>科技部，前沿人工智慧科研成果轉化：轉譯、呈現、與評估－子計畫一：人工智慧成果影響評估與轉譯及人工智慧知識圖譜之生成(2/3)，MOST 108-2514-S-031-001。https://education.nstm.gov.tw/aibm/index.html</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2018/07/01~2019/06/30</div>
+                    <div>科技部，前沿人工智慧科研成果轉化：轉譯、呈現、與評估－總計畫(含子計畫一)：人工智慧成果影響評估與轉譯及人工智慧知識圖譜之生成(1/3)，MOST 107-2514-S-031-001。https://education.nstm.gov.tw/aibm/index.html</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2018/04/01~2020/03/31</div>
+                    <div>科技部，巨量資料分析與人工智慧：實現群眾募資風險評估，MOST 107-2218-E-031-001-MY2。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2016/10/22~2016/10/23</div>
+                    <div>科技部，國內舉辦國際學術研討會，2016全球大數據國際會議，MOST 105-2916-I-031-005-A。</div>
+                </div>
+            </div>
+        </details>
+
+        <details class="details-yellow">
+            <summary>政府單位計畫經歷（擔任計畫共同主持人）</summary>
+            <div class="details-content">
+                <div class="project-item">
+                    <div class="item-date">2020/01/01~2020/12/31</div>
+                    <div>深度學習與大數據分析:實現PM2.5濃度之推估、預測與預警(3/3)，科技部，主持人：陳孟彰(中央研究院資訊科學研究所)，MOST 109-2119-M-001-010 -A。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2019/01/01~2019/12/31</div>
+                    <div>深度學習與大數據分析:實現PM2.5濃度之推估、預測與預警(2/3)，科技部，主持人：陳孟彰(中央研究院資訊科學研究所)，MOST 108-2119-M-001-009 -A。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2017/12/01~2018/12/31</div>
+                    <div>深度學習與大數據分析:實現PM2.5濃度之推估、預測與預警(1/3)，科技部，主持人：陳孟彰(中央研究院資訊科學研究所)，MOST 107-3114-M-001-002 -A。</div>
+                </div>
+            </div>
+        </details>
+
+        <details class="details-red">
+            <summary>教育部深耕計畫經歷（擔任共同主持人）</summary>
+            <div class="details-content">
+                <div class="project-item">
+                    <div class="item-date">2019/01/01~2019/12/31</div>
+                    <div>東吳大學108年度教育部高教深耕計畫，分項計畫：深耕學院優勢、培養趨勢兀型人才計畫，子計畫：深化跨領域學群課程規劃以奠基巨量資料解析能力培養與就業保障，教育部108A600。獲得東吳大學計畫執行成效優良獎。</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2018/01/01~2018/12/31</div>
+                    <div>東吳大學107年度教育部高教深耕計畫，分項計畫：深耕學院優勢、培養趨勢兀型人才計畫，子計畫：深化跨領域學群課程規劃以奠基巨量資料解析能力培養與就業保障，教育部107A600。獲得東吳大學計畫執行成效優良獎.</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2017/01/01~2017/12/31</div>
+                    <div>東吳大學教學卓越計畫; C『課程分流、學用合一』分項計畫; 培育跨領域之巨量資料分析與應用人才子計畫，教育部106C405。獲得東吳大學計畫執行成效優良獎.</div>
+                </div>
+                <div class="project-item">
+                    <div class="item-date">2017/01/01~2017/12/31</div>
+                    <div>東吳大學教學卓越計畫; NEW『高教深耕、創新教學』計畫; 大數據時代的資料實驗室子計畫，教育部106N104。獲得東吳大學計畫執行成效優良獎.</div>
+                </div>
+            </div>
+        </details>
+
+        <h2 class="section-title" id="awards" style="color: var(--red-text);">
+            <span class="material-icons-outlined" style="color: var(--google-red); font-size: 32px;">emoji_events</span> Awards, Mentorship & Academic Service
+        </h2>
+        
+        <div class="card card-red">
+            <h4 style="font-weight:700; font-size:18px; color:var(--red-text);">Personal Awards</h4>
+            <div class="award-subcard">
+                <ul style="padding-left:20px; font-size:15px; color:var(--text-primary); display:flex; flex-direction:column; gap:6px;">
+                    <li>2021 東吳大學熱心導師獎</li>
+                    <li>2020 東吳大學巨量資料管理學院文華獎學金教師組</li>
+                    <li>2018 IBM Faculty Awards - Cognitive Computing area</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card card-yellow">
+            <h4 style="font-weight:700; font-size:18px; color:var(--yellow-text);">指導學生競賽獲獎紀錄</h4>
+            <div class="award-subcard">
+                <ul style="padding-left:20px; font-size:14px; color:var(--text-primary); display:flex; flex-direction:column; gap:10px;">
+                    <li><strong>2022</strong>：全國大專校院智慧創新暨跨域整合創作競賽，智慧機器組佳作獎，隊員：王銓、梁崴、吳嘉恩，指導教授：黃福銘。</li>
+                    <li><strong>2019</strong>：IEEE Big Data Conference - BigData Cup Challenges：Suspicious Network Event Recognition，The 16th Place and Excellent Solution Paper Publication. 隊員：楊騏瑋、戴曉騏、楊涓、黃任杰、廖昱翰(國貿系)，指導教授：黃福銘。</li>
+                    <li><strong>2019</strong>：全國大專院校AI金融科技創新創意大賽，創意組佳作獎，隊員：黃子馨(國貿系)、吳詠琳(會計系)、黃煒森(財精系)、秦李欣(會計系)，指導教授：黃福銘。</li>
+                    <li><strong>2018</strong>：華南金控第三屆金融科技創新競賽，創新技術實證MBA組最佳潛力獎。隊員：鍾崴亦、郭珮柔、賴建郡、李瀚宇、劉鎧瑄，業師：楊涓、黃昭元、彭鈺湄，指導教授：黃福銘。</li>
+                    <li><strong>2017</strong>：華南金控第二屆金融科技創新競賽，華南M.B.A.挑戰獎- AI組，隊員：楊涓、劉聿欣、李姿儀、蔡政宏，指導教授：黃福銘。</li>
+                    <li><strong>2017</strong>：HackNTU 臺大黑客松，大會最佳DEMO獎，隊員：李昱萱、楊涓、劉聿欣、李姿儀，指導教授：黃福銘。</li>
+                </ul>
+            </div>
+        </div>
+
+        <details class="details-blue">
+            <summary>指導學生碩士論文 (Master Theses Advised) — 共20餘位</summary>
+            <div class="details-content">
+                <p style="margin-bottom:14px; font-weight:700; color:var(--blue-text); font-size: 15px;">指導超過20位研究生完成包含機器學習、深度學習、精準行銷、電腦視覺、自然語言處理、影像辨識等多元商業資料科學應用領域之碩士論文(2018-2023)。</p>
+                <ol style="padding-left:20px; font-size:14px; color:var(--text-primary); display:flex; flex-direction:column; gap:8px;">
+                    <li>李健源，112年，「機器學習於電競賽事的勝負預測-以英雄聯盟為例」，東吳大學巨量資料管理學院碩士在職學位學程，碩士論文，黃福銘／鄭江宇共同指導。</li>
+                    <li>黃士倫，111年，「以深度學習方法強化精品百貨精準行銷」，東吳大學巨量資料管理學院碩士學位學程，碩士論文，黃福銘／葉向原共同指導。</li>
+                    <li>何宗寧，110年，「金控集團內客群之商品精準行銷之研究」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>楊騏瑋，110年，「應用卷積自動編碼器於影片之異常偵測與空間定位」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>張德賢，110年，「整合主題模型與文字情緒分析強化寵物用品之使用者評價預測」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>黃喬永，110年，「用資料探勘方法預測人口流動之變化-以金門地區為例」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>莊雅婷，110年，「利用可解釋性深度學習方法探討寵物領養速度之影響因素」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>張容溥，110年，「以芙蓉特徵篩選法降低資料維度-以商業領域為例」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>張景揚，109年，「以機器學習方法預測訂閱型電子遊戲之用戶流失」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>決弘衛，108年，「透過WIFI訊號以機器學習方式預測密閉空間內的人數」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>郭珮柔，108年，「基於人工智慧的寵物認養速度分析之研究」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>蔡宜樺，108年，「以公開資料與數位分行佈點數探討人工智慧方法之有效性-以台北市為例」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>林敬傑，108年，「以機器學習與異質公開資料為基礎之汽車停車安全性分析-以台北市為例」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>黃昭元，108年，「情感分析應用於總統選舉之分析方法與研究」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>林武賢，108年，「士兵個人特質對招募成效之影響與分析」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>趙茂林，108年，「以人類腦波資料與機器學習方法為基礎之情緒辨識」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>盧伯霖，108年，「以機器學習模型為基礎之YouTube影片分享網站熱門榜單影片觀看量預測」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>陳佳良，107年，「基於人工智慧與手機感測的使用者行為辨識」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>張雯雁，107年，「高速公路旅行時間預測模型之研究」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>馬中逸，107年，「整合開放資料以最佳化低碳低空汙永續旅遊規劃」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                    <li>余碧芬，107年，「應用深度學習預測群眾募資專案的成功機率」，東吳大學巨量資料管理學院碩士學位學程，碩士論文。</li>
+                </ol>
+            </div>
+        </details>
+
+        <div class="card card-green" style="margin-top:16px;">
+            <h4 style="font-weight:700; margin-bottom:6px; color:var(--green-text);">Academic Service</h4>
+            <p style="font-size:15px; color:var(--text-primary); font-weight: 500;">Chairs. 2016 International Conference on Big Data, Taipei, Taiwan。</p>
+        </div>
+
+        <div class="card card-green">
+            <h4 style="font-weight:700; font-size:18px; color:var(--yellow-text);">舉辦全國性研究成果展演</h4>
+            <div class="award-subcard">
+                <ul style="padding-left:20px; font-size:14px; color:var(--text-primary); display:flex; flex-direction:column; gap:10px;">
+                    <li><strong>2020.09.15~2020.09.20</strong>：2020科技部前沿科技轉化暨推廣成果展，台灣，高雄，國立科學工藝博物館。</li>
+                    <li><strong>2020.09.22~2020.09.23</strong>：2020科技部前沿科技轉化暨推廣成果展，台灣，屏東縣，恆春國中。</li>
+                    <li><strong>2020.09.25~2020.09.26</strong>：2020科技部前沿科技轉化暨推廣成果展，台灣，台中市，國立中科實驗高級中學。</li>
+                    <li><strong>2019.07.13~2019.07.16</strong>：「2019科技開屏」新興科技教育成果展，屏東縣 國立屏東科技大學。</li>
+                    <li><strong>2019.07.14~2019.07.16</strong>：「2019科轉到嘉--前沿科技轉化暨教育應用推廣」移展，嘉義市 港坪國小。</li>
+                    <li><strong>2019.07.23~2019.07.28</strong>：「2019科轉港都--前沿科技轉化暨教育應用推廣}」移展，高雄市 國立科學工藝博物館。</li>
+                    <li><strong>2019.08.21~2019.08.22</strong>：「2019科轉菊島--前沿科技轉化暨教育應用推廣}」移展，澎湖縣 國立澎湖科技大學。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card card-yellow">
+            <h4 style="font-weight:700; font-size:18px; color:var(--yellow-text);">學術服務</h4>
+            <div class="award-subcard">
+                <ul style="padding-left:20px; font-size:14px; color:var(--text-primary); display:flex; flex-direction:column; gap:10px;">
+                <li><strong>2021.08</strong>：教師研習「AI 機器學習與深度學習應用 使用 Python 與 R 語言」，講師，教育部。</li>
+                <li><strong>2021.08</strong>：永續發展與人工智慧培訓課，台北市政府。</li>
+                <li><strong>2021</strong>：教育部補助人工智慧技術與應用領域系列課程計畫，計畫評審委員。</li>
+                <li><strong>2021.02~2021.06</strong>：資料科學微課程講師，臺北市立內湖高級中學。</li>
+                <li><strong>2020.02~2020.05</strong>：教育訓練講師，Python資料科學專案實務，國泰世紀產物保險股份有限公司。</li>
+                <li><strong>2020</strong>：教育部補助人工智慧技術與應用領域系列課程計畫，計畫評審委員。</li>
+                <li><strong>2020</strong>：中華民國對外貿易發展協會，計畫評審委員。</li>
+                <li><strong>2020</strong>：大數據資料建模實作班講師，台灣電力公司訓練所訓練計畫。</li>
+                <li><strong>2020</strong>：資料科學課程講師，經濟部工業局 DIGI+Talent 跨域數位人才加速躍升計畫。</li>
+                <li><strong>2019.10.21</strong>：演講，運用大數據及AI技術提升稅務查審作業之服務效能-推薦系統，財政部財政資訊中心。</li>
+                <li><strong>2019.08~2019.10</strong>：教育訓練講師，R語言機器學習實務，國泰世紀產物保險股份有限公司。</li>
+                <li><strong>2019</strong>：運用大數據及AI技術提升稅務查審作業之服務效能-推薦系統，財政部財政資訊中心。</li>
+                <li><strong>2019.4.02~2019.04.09</strong>：參與東吳大學潘維大校長寧夏大學與鄭州大學參訪團。</li>
+                <li><strong>2019.06.30~2019.07.30</strong>：巨資學院教師團參訪中國南京中醫藥大學。</li>
+                <li><strong>2019</strong>：教育部補助人工智慧技術與應用領域系列課程計畫，計畫評審委員。</li>
+                <li><strong>2018.11.23</strong>：演講，資料視覺化方法，台灣科技大學設計系。</li>
+                <li><strong>2018.10</strong>：教育訓練講師，資料庫管理系統，金融控股股份有限公司。</li>
+                <li><strong>2018.09.19</strong>：教育訓練講師，資料視覺化在金融數據的應用，FinTechBase 2018金融科技系列創新講座。</li>
+                <li><strong>2018</strong>：講師，大數據專題研究課程，康橋國際學校，臺灣。</li>
+                <li><strong>2018.10</strong>：資料庫管理系統教育訓練講師，華南金融控股股份有限公司。</li>
+                <li><strong>2018.09.19</strong>：資料視覺化在金融數據的應用講師，FinTechBase 2018金融科技系列創新講座。</li>
+                <li><strong>2018</strong>：教育部補助人工智慧技術與應用領域系列課程計畫，計畫評審委員。</li>
+                <li><strong>2017.11.08</strong>：資料視覺化在金融科技的應用演講，國立臺北商業大學資訊與決策科學研究所。</li>
+                <li><strong>2017.10.27</strong>：資料視覺化在金融數據的應用講師，FinTechBase 2017金融科技系列創新講座。</li>
+                <li><strong>2017.09</strong>：開放資料的深度解析與視覺化應用教育訓練講師，審計部新進審計人員專業基礎訓練。</li>
+                <li><strong>2017.11.08</strong>：演講，資料視覺化在金融科技的應用，國立臺北商業大學資訊與決策科學研究所。</li>
+                <li><strong>2017.10.27</strong>：演講，資料視覺化在金融數據的應用，FinTechBase 2017金融科技系列創新講座。</li>
+                <li><strong>2017.09</strong>：教育訓練講師，開放資料的深度解析與視覺化應用，審計部新進審計人員專業基礎訓練。</li>
+                <li><strong>2017</strong>：社團教師，高中數據分析研究社，康橋國際學校，臺灣。</li>
+                <li><strong>2016</strong>：督導，財團法人伊甸社會福利基金會新竹分事務所，新竹市政府委託身障福利服務中心。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card card-red">
+            <h4 style="font-weight:700; font-size:18px; color:var(--yellow-text);">擔任研討會組織成員</h4>
+            <div class="award-subcard">
+                <ul style="padding-left:20px; font-size:14px; color:var(--text-primary); display:flex; flex-direction:column; gap:10px;">
+                <li><strong>Big Data for e-Business Track Chairs. IEEE International Conference on E-Business and Engineering (ICEBE), 2016～迄今。</strong></li>
+                <li><strong>Program Committee, Taiwan Conference on Software Engineering (TCSE), 2016～迄今。</strong></li>
+                <li><strong>Program Committee, Taiwan E-Learning Forum (TWELF2020), 2020。</strong></li>
+                <li><strong>General Chairs. 2018 Conference on Artificial Intelligence and Data Science Application, Taipei, Taiwan。</strong></li>
+                <li><strong>Program Committee, 臺灣網際網路研討會 (TANET), 2018。</strong></li>
+                <li><strong>General Chairs. R Taiwan 2017 Conference, Taipei, Taiwan。</strong></li>
+                <li><strong>Program Committee, The 8th Global Chinese Conference on Inquiry Learning : Innovations and Applications (GCCIL), 2017。</strong></li>
+                <li><strong>General Chairs. 2016 International Conference on Big Data, Taipei, Taiwan。</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="publications" style="color: var(--blue-text);">
+            <span class="material-icons-outlined" style="color: var(--google-blue); font-size: 32px;">menu_book</span> Publications
+        </h2>
+
+        <details class="details-blue" open>
+            <summary>Journal Publications</summary>
+            <div class="details-content">
+                <ul style="padding-left:20px; font-size:14px; color:var(--text-primary); display:flex; flex-direction:column; gap:10px; list-style-type: square;">
+                    <li>Yang, S.J.H., Zhang, J., & Fu-Ming Huang (2008). Applying Web Page Adaptation Technique to the Augmentation of Mobile Learning. Journal of Research and Practice in Technology Enhanced Learning, 3(3), 253-273. (supported by NSC-95-2520-S-008-006-MY3 and NSC-96-2628-S-008-008-MY3)</li>
+                    <li>Yang, S.J.H., Zhang, J., Tsai, J.J.P., & Fu-Ming Huang (2009). SOA-based Content Delivery Model for Mobile Internet Navigation. International Journal of Artificial Intelligence Tools, 18(1), 141-161. (SCIE, EI). (supported by NSC95-2520-S-008-006-MY3 and NSC 96-2628-S-008-008-MY3)</li>
+                    <li>Fu-Ming Huang, & Yang, S.J.H. (2009). Situational Mashups for Ubiquitous Learning. International Journal on Digital Learning Technology, 1(3), 140-160. (supported by NSC96-2628-S008-008-MY3)</li>
+                    <li>Fu-Ming Huang, Ci-Wei Lan, & Yang, S.J.H. (2009). An optimal QoS-based Web services selection scheme. Information Sciences, 179(19), 3309-3322. (SCI, IF: 3.969). (supported by NSC95-2520-S-008-006-MY3 and NSC 96-2628-S-008-008-MY3)</li>
+                    <li>Yang, S.J.H., Zhang, J., & Fu-Ming Huang (2009). Model, Properties, and Applications of Context-Aware Web Services. Machine Learning in Cyber Trust: Reliability, Security, Privacy, ISBN 9780387887340, March, 2009, Springer.</li>
+                    <li>Fu-Ming Huang, Yang, S.J.H., Hwang, G.-J. (2010). Situational language teaching in ubiquitous learning environments. Knowledge management and e-Learning, 2(3), 312-327. (supported by NSC 98-2511-S-008-006-MY3 and NSC 98-2511-S-008-007-MY3)</li>
+                    <li>Fu-Ming Huang, Yang, S.J.H., Wang, M. & Tsai, J.J.P. (2010). Improving Fuzzy Knowledge Integration with Particle Swarm Optimization. Expert Systems with Applications, 37(12), 8770-8783. (SCI, IF: 2.254). (supported by NSC95-2520-S-008-006-MY3 and NSC96-2628-S-008-008-MY3)</li>
+                    <li>Fu-Ming Huang, Yang, S.J.H., W.T.C., & Liao, S.S. (2012). A study of user's acceptance on situational mashups in situational language teaching. British Journal of Educational Technology, 43(1), 52-61, (SSCI, IF: 1.394). (supported by NSC 98-2511-S-008-006-MY3 and NSC 98-2511-S-008-007-MY)</li>
+                    <li>Fu-Ming Huang, John T.H. Wu, Stephen J.H. Yang, & Wu-Yuin Hwang. (2012). The success of eportfolio-based programming learning style diagnosis: exploring the role of a novel heuristic fuzzy knowledge fusion. Expert Systems with Applications, 39(10), 8698-8706. (SCI, IF: 2.254). (supported by NSC98-2511-S-008-006-MY3, NSC98-2511-S-008-007-MY3, NSC99-2511-S-008-006-MY3)</li>
+                    <li>Su, AddisonY.S., Huang, ChesterS.J., Ding, T.-J., Fu-Ming Huang, Yang, Stephen J.H., & Hsieh, Y.-Z. (2014). Collaborative Search Research in College Computer Courses. Collaboration Technologies and Social Computing, ISBN 9783662446508, Springer Berlin Heidelberg.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="details-purple" style="background:#f3f0fa; border: 1px solid #d7cbe6;">
+            <summary style="color:#512da8;">Conference Publications</summary>
+            <div class="details-content">
+                <ul style="padding-left:20px; font-size:14px; color:var(--text-primary); display:flex; flex-direction:column; gap:10px; list-style-type: square;">
+                    <li>J.H. Yang, Fu-Ming Huang, & B.C.W. Lan. Based on Contextual Profiles to Verify Semantic Web Services. The First Workshop on Intelligent Web Technologies. September, 2004.</li>
+                    <li>J.H. Yang, A.C.N. Chang, S.C. Hsiao, Z.C.C. Hu, & Fu-Ming Huang. A Web Based PBL Environment for Medicine Education. The Sixth Internet Application and Development. 2005.</li>
+                    <li>J.H. Yang, Fu-Ming Huang, & B.C.W. Lan. Intelligent Search Engine with Semantic Web Technology. Mobile Computing Symposium of 2005 National Computer Symposium (NCS 2005). December, 2005.</li>
+                    <li>J.H. Yang, Fu-Ming Huang, R. Chen, S.S. Tseng, & Y.S. Shen. Context Model and Context Acquisition for Ubiquitous Content Access in U-Learning Environments. IEEE International Workshop on Context Aware Ubiquitous Learning (CAUL 2006). June, 2006.</li>
+                    <li>Fu-Ming Huang, Z. Hu, C. Huang, R. Chen, A. Su, & S.J.H. Yang. Ubiquitous Learning Environments for Peer-to-Peer Collaborative Learning. Ubiquitous and Mobile Learning Workshop. April, 2006.</li>
+                    <li>C.S. Chen, C.W.S. Huang, Fu-Ming Huang, & S.J.H. Yang. A Context Oriented Content Adaptation Mechanism. Ubiquitous and Mobile Learning Workshop. April, 2006.</li>
+                    <li>J.H. Yang, Fu-Ming Huang, B. Lan, & I.Y.L. Chen. Context Aware SOA for Mobile Learning Activity. International Conference on SCORM. January, 2006.</li>
+                    <li>Fu-Ming Huang, I.Y.L. Chen, & S.J.H. Yang. Ubiquitous Learning Services: Context Model and Context-Aware Applications. The Mobile and Ubiquitous Technologies Enhanced Learning Conference (UbiLearn 2008). May 2007.</li>
+                    <li>Fu-Ming Huang, S.B. Huang, E.Y.F. Lee, & Yang, S.J.H. Improving End-User Programming with Situational Mashups in Web 2.0 Environment. IEEE International Symposium on Service-Oriented System Engineering (SOSE 2008). December, 2008.</li>
+                    <li>Yang, S.J.H., Jia Zhang, Fu-Ming Huang, Tsai, J.J.P., & Yu, P.S. A Context-driven Content Adaptation Planner for Improving Mobile Internet Accessibility. International Conference on Web Services (ICWS 2008). September, 2008. (EI).</li>
+                    <li>Fu-Ming Huang, Lan, C.W., Yang, S.J.H. QoS-based Learning Services Composition for Ubiquitous Learning. IEEE International Conference on Sensor Networks, Ubiquitous and Trustworthy Computing (SUTC 2008). June, 2008.</li>
+                    <li>C. Huang, Fu-Ming Huang, & S.J.H. Yang. Apply Friend-Relation to Enhance Learning Community Search within Social Network Service Platform. The Mobile and Ubiquitous Technologies Enhanced Learning Conference (UbiLearn 2008). May, 2008.</li>
+                    <li>W. Lan, R. Chen, A. Su, Fu-Ming Huang, S. Yang & J.-Y. Chung. A Multiple Objectives Optimization Approach for QoS-Based Web Services Compositions. The 6th IEEE International Conference on e-Business Engineering (ICEBE). 2009.</li>
+                    <li>Wilson T.C. Yang, Alex W.Y. Liao, Fu-Ming Huang, & Stephen J.H. Yang. Using Concept Maps for Learning Disability Diagnosis and Learning Prescription Generation for Programming Courses. Technology Enhanced Learning Conference 2009 (TELearn 2009). October, 2009.</li>
+                    <li>Liao, A.W.Y., Yang, W.T.C., Fu-Ming Huang, & Yang, S.J.H. Rule-based expert system survey optimization adaptive test bank: Take studies the programming language design curriculum as the example. Taiwan E-Learning Forum 2009 (TWELF 2009). September, 2009.</li>
+                    <li>Chu, J.C.Y., Liao, A.W.Y., Yang, T.C., Fu-Ming Huang, & Yang, S.J.H. Learning Styles Diagnosis and Teaching Style-based Assessment in Programming Design Teaching and Learning. The 13th Global Chinese Conference on Computers in Education (GCCCE 2009), May, 2009.</li>
+                    <li>Its Power Consumption Observation in Location-based Service Scenario. The IEEE International Conference on Mobile Services. Special Track – Mobile Application Quality (IEEE MS-MAQ), June, 2015, New York, USA.</li>
+                    <li>Kun-Ji Lui, Addison Y.S. Su, Chiu-Nan Su, & Fu-Ming Huang. Information Password Recovery with GPU. The 49th Annual International Carnahan Conference on Security Technology (ICCST). September, 2015, Taipei, Taiwan.</li>
+                    <li>Lung S.C.C.; Wang D.W., Chen S.W., Chen L.J., Chen M.C., Tu S.H., Liao P.S., Lin C.Y., Wang W.C., Huang A.F.M. (2015) Heat-Stress Vulnerability Assessment with Monitoring, Modeling, Social Survey, and E-science for Health Adaptation. The 26th International Union of Geodesy and Geophysics (IUGG) General Assembly, Prague, Czech Republic, June, 2015.</li>
+                    <li>Lung S.C.C.; Wang D.W., Tu S.H., Liao P.S., Chen M.C., Chen S.W., Chen L.J., Lin C.Y., Wang W.C., Huang A.F.M. Community-Based Heat-Stress Vulnerability Assessment with Monitoring, Social Survey, and Crowd-sourcing Technology for Health Adaptation. The Common Future under Climate Change Conference, Paris, France, July, 2015.</li>
+                    <li>Lung S.C.C.; Lin C.Y., Wang W.C., Wang D.W., Chen S.W., Chen L.J., Chen M.C., Tu S.H., Liao P.S., Huang A.F.M. Heat-Stress Vulnerability Assessment to Enhance Urban Health Resilience under Climate Change. The International Symposium on Co-design for Urbanization in China and Asia-Pacific Region, October, 2015.</li>
+                    <li>Mick Chang-Heng Lin, Fu-Ming Huang, Po-Ching Liu, Yu-Hsiang Huang and You-Shan Chung. Dijkstra-Based Selection for Parallel Multi-lanes Map-Matching and An Actual Path Tagging System. The 8th Asian Conference on Intelligent Information and Database Systems (ACIIDS2016), March, 2016, Da Nang, Vietnam.</li>
+                    <li>C. Chen, Angus F.M. Huang*, Y. Liu and D. Wu, "Artificial Intelligence and Mobile Phone Sensing Based User Activity Recognition," 2018 IEEE 15th International Conference on e-Business Engineering (ICEBE), Xi'an, 2018, pp. 164-171. doi: 10.1109/ICEBE.2018.00034.</li>
+                    <li>P. Yu, Angus F.M. Huang*, C. Yang, Y. Liu, Z. Li and C. Tsai, "Prediction of Crowdfunding Project Success with Deep Learning," 2018 IEEE 15th International Conference on e-Business Engineering (ICEBE), Xi'an, 2018, pp. 1-8. (Best Paper Award). doi: 10.1109/ICEBE.2018.00012.</li>
+                    <li>Angus F.M. Huang*, Y. Chi-Wei, H. Tai, Y. Chuan, J. J. C. Huang and Y. Liao, "Suspicious Network Event Recognition Using Modified Stacking Ensemble Machine Learning," 2019 IEEE International Conference on Big Data (Big Data), Los Angeles, CA, USA, 2019, pp. 5873-5880. doi: 10.1109/BigData47090.2019.9006391.</li>
+                    <li>盧伯霖、楊騏瑋、謝馨頤、劉謦瑄、黃福銘*，以機器學習模型為基礎之YouTube影片分享網站熱門榜單影片觀看量預測，The International Conference on Technologies and Applications of Artificial Intelligence (TAAI 2020)，Taipei，Taiwan，Dec. 3-5，2020。</li>
+                </ul>
+            </div>
+        </details>
+
+        <h2 class="section-title" id="resources" style="color: var(--google-blue);">
+            <span class="material-icons-outlined" style="color: var(--google-blue); font-size: 32px;">folder_open</span> Financial Technology & 網路學習資源
+        </h2>
+        
+        <div class="resource-grid">
+            <div class="resource-card"><span>⚖️</span> 銀行法</div>
+            <div class="resource-card"><span>⚖️</span> 金融控股公司及銀行業內部控制及稽核制度實施辦法</div>
+            <div class="resource-card"><span>🤖</span> 金融監督管理委員會-金融業運用人工智慧(AI)指引</div>
+            <div class="resource-card"><span>💼</span> 銀行公會-金融機構運用人工智慧技術作業規範</div>
+            <div class="resource-card"><span>📜</span> 行政院-人工智慧基本法</div>
+            <div class="resource-card"><span>🏢</span> 數位發展部-公部門人工智慧應用參考手冊</div>
+            <div class="resource-card"><span>🪙</span> 金融監督管理委員會-虛擬資產服務法</div>
+            <div class="resource-card"><span>📈</span> 證券投資信託基金管理辦法</div>
+            <div class="resource-card"><span>📝</span> 證券投資信託事業私募證券投資信託基金投資說明書應行記載事項準則</div>
+            <div class="resource-card"><span>🏢</span> 信託法 / 公司法 / 企業併購法</div>
+            <div class="resource-card"><span>🌍</span> 境外基金管理辦法</div>
+            <div class="resource-card"><span>🛡️</span> 證券交易法 / 證券投資信託及顧問法</div>
+            <div class="resource-card"><span>💎</span> 特殊目的公司設立及許可準則（SPV）</div>
+        </div>
+
+        <!-- 新增：活動剪影展示區塊 -->
+        <h2 class="section-title" id="activities" style="color: var(--red-text);">
+            <span class="material-icons-outlined" style="color: var(--google-red); font-size: 32px;">collections</span> Activities & Highlights
+        </h2>
+
+        <div class="card card-red" style="text-align: center; padding: 24px;">
+            <div style="overflow: hidden; border-radius: 16px; border: 1px solid var(--red-border); background: white; padding: 8px; display: inline-block; max-width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <img src="FM-1-HackNTU.jpg" alt="FM-1-HackNTU.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 10px;">
+            </div>
+            <p style="margin-top: 14px; font-size: 16px; font-weight: 700; color: var(--red-text); letter-spacing: 0.5px;">
+                🏆 2017 HackNTU 臺大黑客松 — 榮獲大會最佳 DEMO 獎團隊合影
+            </p>
+        </div>
+
+        <div class="card card-blue" style="text-align: center; padding: 24px;">
+            <div style="overflow: hidden; border-radius: 16px; border: 1px solid var(--red-border); background: white; padding: 8px; display: inline-block; max-width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <img src="FM-2-FinTech.jpg" alt="FM-2-FinTech.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 10px;">
+            </div>
+            <p style="margin-top: 14px; font-size: 16px; font-weight: 700; color: var(--red-text); letter-spacing: 0.5px;">
+                🏆 合影～
+            </p>
+        </div>
+
+        <div class="card card-yellow" style="text-align: center; padding: 24px;">
+            <div style="overflow: hidden; border-radius: 16px; border: 1px solid var(--red-border); background: white; padding: 8px; display: inline-block; max-width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <img src="FM-3-Game.jpg" alt="FM-3-Game.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 10px;">
+            </div>
+            <p style="margin-top: 14px; font-size: 16px; font-weight: 700; color: var(--red-text); letter-spacing: 0.5px;">
+                🏆 合影～
+            </p>
+        </div>
+
+        <div class="card card-green" style="text-align: center; padding: 24px;">
+            <div style="overflow: hidden; border-radius: 16px; border: 1px solid var(--red-border); background: white; padding: 8px; display: inline-block; max-width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <img src="FM-4-Game.jpg" alt="FM-4-Game.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 10px;">
+            </div>
+            <p style="margin-top: 14px; font-size: 16px; font-weight: 700; color: var(--red-text); letter-spacing: 0.5px;">
+                🏆 合影～
+            </p>
+        </div>
+
+        <div class="card card-red" style="text-align: center; padding: 24px;">
+            <div style="overflow: hidden; border-radius: 16px; border: 1px solid var(--red-border); background: white; padding: 8px; display: inline-block; max-width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <img src="FM-5-ICEBE.jpg" alt="FM-5-ICEBE.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 10px;">
+            </div>
+            <p style="margin-top: 14px; font-size: 16px; font-weight: 700; color: var(--red-text); letter-spacing: 0.5px;">
+                🏆 合影～
+            </p>
+        </div>
+
+        <div class="card card-blue" style="text-align: center; padding: 24px;">
+            <div style="overflow: hidden; border-radius: 16px; border: 1px solid var(--red-border); background: white; padding: 8px; display: inline-block; max-width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <img src="FM-6-Green.jpg" alt="FM-6-Green.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 10px;">
+            </div>
+            <p style="margin-top: 14px; font-size: 16px; font-weight: 700; color: var(--red-text); letter-spacing: 0.5px;">
+                🏆 合影～
+            </p>
+        </div>
+
+        <div class="card card-yellow" style="text-align: center; padding: 24px;">
+            <div style="overflow: hidden; border-radius: 16px; border: 1px solid var(--red-border); background: white; padding: 8px; display: inline-block; max-width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <img src="FM-7-Openhouse.jpg" alt="FM-7-Openhouse.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 10px;">
+            </div>
+            <p style="margin-top: 14px; font-size: 16px; font-weight: 700; color: var(--red-text); letter-spacing: 0.5px;">
+                🏆 合影～
+            </p>
+        </div>
+
+        <div class="card card-green" style="text-align: center; padding: 24px;">
+            <div style="overflow: hidden; border-radius: 16px; border: 1px solid var(--red-border); background: white; padding: 8px; display: inline-block; max-width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <img src="FM-8-Sinica.jpg" alt="FM-8-Sinica.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 10px;">
+            </div>
+            <p style="margin-top: 14px; font-size: 16px; font-weight: 700; color: var(--red-text); letter-spacing: 0.5px;">
+                🏆 合影～
+            </p>
+        </div>
+
+        <div class="card card-red" style="text-align: center; padding: 24px;">
+            <div style="overflow: hidden; border-radius: 16px; border: 1px solid var(--red-border); background: white; padding: 8px; display: inline-block; max-width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <img src="FM-9-ANTS.jpg" alt="FM-9-ANTS.jpg" style="max-width: 100%; height: auto; display: block; border-radius: 10px;">
+            </div>
+            <p style="margin-top: 14px; font-size: 16px; font-weight: 700; color: var(--red-text); letter-spacing: 0.5px;">
+                🏆 合影～
+            </p>
+        </div>
+
+    </main>
+
+    <footer>
+        <p style="font-weight: 700; font-size: 16px;">© 2026 富銘書院 (Fumming Academy). All Rights Reserved.</p>
+        <p style="margin-top: 8px; opacity: 0.6; font-size: 12px; letter-spacing: 0.5px;">Designed with Passion alignment with Google Go-To-Market Operations Framework.</p>
+    </footer>
+
+</body>
+</html>
