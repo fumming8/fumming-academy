@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>黃福銘 - 富銘書院 - Fumming Academy</title>
+    <!-- 瀏覽器分頁商標圖示：圖片與 index.html 放在同一資料夾 -->
+    <link rel="icon" type="image/png" href="./Logo-富銘-能量球.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     
@@ -139,6 +141,14 @@
             font-weight: 700;
             margin-bottom: 20px;
             box-shadow: 0 4px 10px rgba(26,115,232,0.3);
+        }
+        /* 富銘書院標籤左側商標：保持比例並完整顯示 */
+        .brand-logo {
+            display: block;
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            flex-shrink: 0;
         }
         .hero-title h1 {
             font-size: 42px;
@@ -553,7 +563,7 @@
         <div class="hero-container">
             <div class="hero-title">
                 <div class="google-badge">
-                    <span class="material-icons-outlined" style="font-size:20px">work_outline</span>
+                    <img src="./Logo-富銘-能量球.png" alt="富銘商標" class="brand-logo" width="28" height="28">
                     富銘書院 * Fumming Academy
                 </div>
                 <h1>黃福銘 老師</h1>
